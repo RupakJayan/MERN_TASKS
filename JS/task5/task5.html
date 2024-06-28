@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgb(238,174,202);
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            font-size: 30px;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 50px;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        .form-container {
+            background-color: transparent;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        .form-field {
+            margin-bottom: 20px;
+        }
+        .error input, .error textarea {
+            border: 1px solid red;
+        }
+        .error-message {
+            color: red;
+            display: none;
+            margin-left: 10px;
+        }
+        .error .error-message {
+            display: inline;
+        }
+        button[type="submit"] {
+            background-color: #ff6347;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #ff4500;
+        }
+     
+        .marquee-submitted {
+            font-family: 'Sacramento', cursive;
+            font-size: 40px;
+            color: #0a0e11;
+            margin-bottom: -150px;
+            width: 75%;
+            overflow: hidden;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="marquee-submitted">
+            <marquee behavior="scroll" direction="left">
+                Submitted by: Rupak Jayan B - 21mic0120
+            </marquee>
+        </div>
+        <div class="form-container">
+            <h1>Task 5 - Form Validation</h1>
+            <br>
+            <form id="contactForm" onsubmit="validateForm(event)">
+                <div class="form-field">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <span class="error-message">This field is required</span>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email">
+                    <span class="error-message">A valid email address is required</span>
+                </div>
+                <div class="form-field">
+                    <label for="website">Website:</label>
+                    <input type="text" id="website" name="website">
+                    <span class="error-message">A valid URL is required</span>
+                </div>
+                <div class="form-field">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message"></textarea>
+                    <span class="error-message">This field is required</span>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            const fields = document.querySelectorAll(".form-field");
+            fields.forEach(field => {
+                field.classList.remove("error");
+            });
+
+            const nameField = document.getElementById("name");
+            if (nameField.value.trim() === "") {
+                nameField.closest(".form-field").classList.add("error");
+                isValid = false;
+            }
+
+            const emailField = document.getElementById("email");
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!emailField.value.match(emailPattern)) {
+                emailField.closest(".form-field").classList.add("error");
+                isValid = false;
+            }
+
+            const websiteField = document.getElementById("website");
+            const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+            if (!websiteField.value.match(urlPattern)) {
+                websiteField.closest(".form-field").classList.add("error");
+                isValid = false;
+            }
+
+            const messageField = document.getElementById("message");
+            if (messageField.value.trim() === "") {
+                messageField.closest(".form-field").classList.add("error");
+                isValid = false;
+            }
+
+            if (isValid) {
+                document.getElementById("contactForm").submit();
+            }
+        }
+    </script>
+</body>
+</html>

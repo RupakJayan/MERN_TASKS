@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse a Number</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Include Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: radial-gradient(
+          circle,
+          rgba(238, 174, 202, 1) 0%,
+          rgba(148, 187, 233, 1) 100%
+        );
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        max-width: 800px;
+        margin-top: 50px;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .card {
+        padding: 20px;
+        border-radius: 10px;
+        width: 100%;
+      }
+      .btn-primary {
+        background-color: #ff6347;
+        border-color: #ff6347;
+        width: 100%;
+        font-size: 2rem;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+      .btn-primary:hover {
+        background-color: #ff4500;
+        border-color: #ff4500;
+      }
+      #result {
+        color: #2e8b57;
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+      .marquee {
+        font-family: "Sacramento", cursive; /* Apply Sacramento font */
+        font-size: 2rem;
+        color: #0a0e11;
+        margin-top: 30px;
+        width: 75%;
+        overflow: hidden;
+      }
+      .marquee marquee {
+        padding: 10px;
+        font-size: 50px;
+        border-radius: 5px;
+        display: inline-block;
+        width: 100%;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        font-size: 1.5rem;
+      }
+      .form-control {
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1 class="text-center">Task 1 - Reverse a Number</h1>
+        <div class="form-group">
+          <label for="numberInput">Enter a number:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="numberInput"
+            placeholder="Enter a number"
+          />
+        </div>
+        <button class="btn btn-primary btn-block" onclick="reverseNumber()">
+          Reverse
+        </button>
+        <div class="mt-3">
+          <p id="result" class="lead"></p>
+        </div>
+      </div>
+      <div class="marquee">
+        <marquee behavior="scroll" direction="left">
+          Submitted by: Rupak Jayan B - 21mic0120
+        </marquee>
+      </div>
+    </div>
+
+    <script>
+      function reverseNumber() {
+        const numberInput = document.getElementById("numberInput").value;
+        if (numberInput) {
+          const reversedNumber = numberInput
+            .toString()
+            .split("")
+            .reverse()
+            .join("");
+          document.getElementById(
+            "result"
+          ).innerText = `Reversed Number: ${reversedNumber}`;
+        } else {
+          document.getElementById("result").innerText =
+            "Please enter a number.";
+        }
+      }
+    </script>
+  </body>
+</html>

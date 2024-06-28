@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Order Sorter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: rgb(238,174,202);
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 800px;
+        }
+        .card {
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #cecdcb;
+            width: 100%;
+        }
+        .btn-primary {
+            width: 100%;
+            font-size: 2rem;
+            border-radius: 15px;
+            margin-top: 20px;
+            background-color: #ff6347;
+            border-color: #ff6347;
+        }
+        .btn-primary:hover {
+            background-color: #ff4500;
+            border-color: #ff4500;
+        }
+        #result {
+            font-size: 2rem;
+            color: #07130c;
+            margin-top: 20px;
+        }
+        .marquee {
+            font-family: 'Sacramento', cursive;
+            font-size: 50px;;
+            color: #0a0e11;
+            margin-top: 30px;
+            width: 50%;
+            overflow: hidden;
+        }
+        .marquee marquee {
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-size: 1.5rem;
+        }
+        .form-control {
+            font-size: 1.5rem;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="text-center">Task 2 - Alphabetical Order Sorter</h1>
+            <div class="form-group">
+                <label for="stringInput">Enter a string:</label>
+                <input type="text" class="form-control" id="stringInput" placeholder="Enter a string">
+            </div>
+            <button class="btn btn-primary" onclick="sortAlphabetically()">Sort Alphabetically</button>
+            <div>
+                <p id="result"></p>
+            </div>
+        </div>
+        <div class="marquee">
+            <marquee behavior="scroll" direction="left">
+                Submitted by: Rupak Jayan B - 21mic0120
+            </marquee>
+        </div>
+    </div>
+
+    <script>
+        function sortAlphabetically() {
+            const stringInput = document.getElementById('stringInput').value;
+            if (stringInput) {
+                const sortedString = stringInput.split('').sort().join('');
+                document.getElementById('result').innerText = `Sorted: ${sortedString}`;
+            } else {
+                document.getElementById('result').innerText = 'Please enter a string.';
+            }
+        }
+    </script>
+</body>
+</html>
